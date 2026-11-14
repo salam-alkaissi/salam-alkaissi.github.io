@@ -1,0 +1,15 @@
+---
+import type { ResearchProject } from '../data/research';
+const { project } = Astro.props as { project: ResearchProject };
+---
+<article class="project-entry research-entry" id={project.id}>
+  <div class="project-heading">
+    <h3><a href={project.url} target="_blank" rel="noreferrer">{project.title}</a></h3>
+    <span class="meta-label project-category">Research</span>
+  </div>
+  <p class="project-description">{project.description}</p>
+  <div class="project-details">
+    <p class="tech-list"><span class="meta-label">TECHNOLOGIES:</span> {project.technologies.join(' · ')}</p>
+    <a class="source-link" href={project.url} target="_blank" rel="noreferrer">Project details <span aria-hidden="true">↗</span></a>
+  </div>
+</article>

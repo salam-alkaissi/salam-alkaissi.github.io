@@ -1,4 +1,4 @@
-# Salam Alkaissi — Personal Website
+# Salam AlKaissi — Personal Website
 
 A two-page personal website built with Astro and TypeScript, adapted from the Google Stitch design export.
 

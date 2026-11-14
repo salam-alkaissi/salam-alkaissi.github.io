@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectEntry from '../components/ProjectEntry.astro';
+import ResearchEntry from '../components/ResearchEntry.astro';
 import { projects } from '../data/projects';
+import { researchProjects } from '../data/research';
 ---
-<BaseLayout title="Projects — Salam Alkaissi" description="Selected machine learning, AI, data science, and engineering projects by Salam Alkaissi." active="projects">
+<BaseLayout title="Projects — Salam AlKaissi" description="Selected research, machine learning, AI, data science, and engineering projects by Salam AlKaissi." active="projects">
   <div class="projects-layout">
     <aside class="projects-sidebar">
       <div class="projects-sidebar-heading">
@@ -17,14 +19,30 @@ import { projects } from '../data/projects';
       </div>
       <p class="projects-sidebar-summary">A selection of work across artificial intelligence, machine learning, data science, and software engineering.</p>
       <div class="repository-index">
-        <p class="meta-label">REPOSITORY INDEX</p>
+        <p class="meta-label">RESEARCH</p>
         <nav aria-label="Project index">
+          {researchProjects.map((project) => <a href={`#${project.id}`}>{project.title}</a>)}
+        </nav>
+      </div>
+      <div class="repository-index">
+        <p class="meta-label">SELECTED PROJECTS</p>
+        <nav aria-label="Repository index">
           {projects.map((project, index) => <a href={`#${project.id}`}>{String(index + 1).padStart(2, '0')}. {project.title}</a>)}
         </nav>
       </div>
     </aside>
-    <section class="projects-content" aria-labelledby="selected-projects">
+    <div class="projects-content">
+      <section class="research-section" aria-labelledby="research-projects">
       <header class="projects-intro">
+        <h2 id="research-projects">Research</h2>
+        <p>Research projects in machine translation and cooperative decentralized systems.</p>
+      </header>
+      <div class="project-list research-project-list">
+        {researchProjects.map((project) => <ResearchEntry project={project} />)}
+      </div>
+      </section>
+      <section class="selected-projects-section" aria-labelledby="selected-projects">
+      <header class="projects-intro selected-projects-intro">
         <h2 id="selected-projects">Selected Projects</h2>
         <p>Projects and technical work drawn from my public repositories. Each description reflects the repository documentation and contents.</p>
       </header>
@@ -33,6 +51,7 @@ import { projects } from '../data/projects';
         <p class="body-small">Browse my GitHub profile for other public repositories.</p>
         <a href="https://github.com/salam-alkaissi" target="_blank" rel="noreferrer">Browse all repositories →</a>
       </div>
-    </section>
+      </section>
+    </div>
   </div>
 </BaseLayout>
