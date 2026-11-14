@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectEntry from '../components/ProjectEntry.astro';
+import { projects } from '../data/projects';
+---
+<BaseLayout title="Projects — Salam Alkaissi" description="Selected machine learning, AI, data science, and engineering projects by Salam Alkaissi." active="projects">
+  <div class="projects-layout">
+    <aside class="projects-sidebar">
+      <div class="projects-sidebar-heading">
+        <h1>Projects</h1>
+        <p class="meta-label accent-label">CODE &amp; RESEARCH</p>
+      </div>
+      <div class="projects-sidebar-identity">
+        <p class="meta-label">SALAM ALKAISSI</p>
+        <p>AI Engineer · Paris, France</p>
+        <a href="https://github.com/salam-alkaissi" target="_blank" rel="noreferrer">github.com/salam-alkaissi ↗</a>
+      </div>
+      <p class="projects-sidebar-summary">A selection of work across artificial intelligence, machine learning, data science, and software engineering.</p>
+      <div class="repository-index">
+        <p class="meta-label">REPOSITORY INDEX</p>
+        <nav aria-label="Project index">
+          {projects.map((project, index) => <a href={`#${project.id}`}>{String(index + 1).padStart(2, '0')}. {project.title}</a>)}
+        </nav>
+      </div>
+    </aside>
+    <section class="projects-content" aria-labelledby="selected-projects">
+      <header class="projects-intro">
+        <h2 id="selected-projects">Selected Projects</h2>
+        <p>Projects and technical work drawn from my public repositories. Each description reflects the repository documentation and contents.</p>
+      </header>
+      <div class="project-list">{projects.map((project) => <ProjectEntry project={project} />)}</div>
+      <div class="projects-endnote">
+        <p class="body-small">Browse my GitHub profile for other public repositories.</p>
+        <a href="https://github.com/salam-alkaissi" target="_blank" rel="noreferrer">Browse all repositories →</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
